@@ -1,7 +1,8 @@
 "use client";
-import { Avatar, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { Avatar, Button, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 
 const ProfileDropDown = () => {
   const session = useSession();
@@ -19,12 +20,14 @@ const ProfileDropDown = () => {
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions">
-        <DropdownItem key="profile" className="h-14 gap-2">
+        <DropdownItem key="profile">
           <p>{session.data?.user?.name}</p>
           <p className="font-semibold">{session.data?.user?.email}</p>
         </DropdownItem>
-        <DropdownItem onClick={() => signOut()} key="logout" color="danger">
-          Log Out
+        <DropdownItem key="logout">
+          <Button onClick={() => signOut()} size="sm" fullWidth color="danger">
+            <FiLogOut size={20}/> Log Out
+          </Button>
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

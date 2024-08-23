@@ -14,22 +14,24 @@ import SearchCities from "./SearchCities";
 
 const Nav = () => {
   return (
-    <Navbar isBlurred={false} maxWidth="2xl" className="bg-opacity-60 bg-neutral-800">
+    <Navbar isBlurred={false} maxWidth="xl" className="bg-opacity-70 bg-neutral-800">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
-      <NavbarBrand>
-        <Link className="gap-2 items-end" color="foreground" href="/">
-          <p className="font-bold text-2xl">RTE</p>
-          <span className="text-xs">(Real Time Explorer)</span>
-        </Link>
+
+      <NavbarBrand className="gap-2 items-end">
+        <p className="font-bold text-2xl">RTE</p>
+        <span className="text-xs">(Real Time Explorer)</span>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:block">
+
+      <NavbarContent className="hidden sm:flex justify-center">
         <SearchCities />
       </NavbarContent>
+
       <NavbarContent as="div" justify="end">
         <ProfileDropDown />
       </NavbarContent>
+
       <NavbarMenu>
         <NavbarMenuItem className="h-full items-center">
           <SearchCities />

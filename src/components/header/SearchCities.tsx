@@ -14,8 +14,8 @@ const options = {
 };
 const SearchCities = () => {
   const { update } = useStore();
-  const [searchValue, setSearchValue] = useState<string>("a")
-  const [Cities, setCities] = useState<City[]>([]);
+  const [searchValue, setSearchValue] = useState<string>();
+  const [cities, setCities] = useState<City[]>([]);
 
   const { mutate, isPending } = useMutation({
     mutationFn: () => axios.get(`https://api.api-ninjas.com/v1/city?name=${searchValue}`, options),
@@ -24,37 +24,32 @@ const SearchCities = () => {
   });
 
   useEffect(() => {
-    mutate();
+    searchValue && mutate();
+
   }, [mutate, searchValue]);
 
   return (
-    <div className="h-full flex items-center">
-
     <Autocomplete
-      variant="faded"
-      label="Search City"
+      variant="bordered"
+      labelPlacement="outside-left"
+      label="Search City:"
+      fullWidth
+      isLoading={isPending}
+      onInputChange={setSearchValue}
+      size="lg"
+      classNames={{ selectorButton: "hidden" }}
       endContent={
-        <Button
-          size="sm"
-          color="primary"
-          isIconOnly
-          isLoading={isPending}
-          disabled={isPending}
-          onPress={() => update(searchValue)}
-        >
-          <FaEye size={16} />
+        <Button isIconOnly variant="light" onPress={() => searchValue && update(searchValue,cities[0].country)}>
+          <FaEye />
         </Button>
       }
-      onInputChange={setSearchValue}
-      size="sm"
     >
-      {Cities.map(({ name }: City, i: number) => (
+      {cities.map(({ name }: City, i: number) => (
         <AutocompleteItem key={i} value={name}>
           {name}
         </AutocompleteItem>
       ))}
     </Autocomplete>
-    </div>
   );
 };
 

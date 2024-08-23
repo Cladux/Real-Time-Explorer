@@ -1,10 +1,12 @@
 import { create } from "zustand";
 type Store = {
   city?: string;
-  update: (city: string) => void;
+  country?: string;
+  update: (city: string, country?: string) => void;
 };
 
 export const useStore = create<Store>((set) => ({
   city: undefined,
-  update: (city) => set(() => ({ city })),
+  country: undefined,
+  update: (city, country) => set(() => ({ city, country })),
 }));

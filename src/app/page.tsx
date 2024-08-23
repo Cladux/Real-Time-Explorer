@@ -1,6 +1,6 @@
-import Background from "@/components/Background";
-import Nav from "@/components/Nav";
-import { Button } from "@nextui-org/react";
+import Background from "@/components/background/Background";
+import Nav from "@/components/header/Nav";
+import MainLayout from "@/components/main/MainLayout";
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
       </header>
       <section>
         <Background />
+        <MainLayout />
       </section>
     </main>
   );
