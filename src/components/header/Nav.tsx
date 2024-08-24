@@ -1,7 +1,5 @@
 "use client";
 import {
-  Input,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -14,17 +12,17 @@ import SearchCities from "./SearchCities";
 
 const Nav = () => {
   return (
-    <Navbar isBlurred={false} maxWidth="xl" className="bg-opacity-70 bg-neutral-800">
-      <NavbarContent className="sm:hidden" justify="start">
+    <Navbar isBlurred={false} maxWidth="xl" className="bg-opacity-90 bg-neutral-800">
+      <NavbarContent className="md:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarBrand className="gap-2 items-end">
+      <NavbarBrand className="gap-2 items-end justify-center md:justify-start">
         <p className="font-bold text-2xl">RTE</p>
-        <span className="text-xs">(Real Time Explorer)</span>
+        <span className="hidden md:block text-xs">Real Time City Explorer</span>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex justify-center">
+      <NavbarContent className="hidden md:flex justify-center">
         <SearchCities />
       </NavbarContent>
 
@@ -33,7 +31,7 @@ const Nav = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        <NavbarMenuItem className="h-full items-center">
+        <NavbarMenuItem>
           <SearchCities />
         </NavbarMenuItem>
       </NavbarMenu>

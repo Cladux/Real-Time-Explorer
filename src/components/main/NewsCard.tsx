@@ -22,7 +22,7 @@ const NewsCard = ({ news }: { news: articles }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div>
-      <Card className="bg-opacity-90">
+      <Card className="bg-opacity-90 shadow-sm">
         <CardHeader className="bg-transparent">
           <Image isBlurred removeWrapper loading="lazy" src={news.urlToImage} alt={news.title} className="w-full" />
         </CardHeader>
@@ -33,8 +33,8 @@ const NewsCard = ({ news }: { news: articles }) => {
         </CardBody>
         <CardFooter className="flex justify-between">
           <span className="text-sm">{formatDate(news.publishedAt)}</span>
-          <Button color="primary" onPress={onOpen}>
-            Read more...
+          <Button size="sm" color="primary" onPress={onOpen}>
+            Read more
           </Button>
         </CardFooter>
       </Card>

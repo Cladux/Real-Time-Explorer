@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+"use client";
+import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
 import type { BgImage } from "@/types";
-import { Image } from "@nextui-org/react";
 
 const BgImageSlider = ({ images }: { images?: BgImage[] }) => {
   return (
@@ -17,15 +17,14 @@ const BgImageSlider = ({ images }: { images?: BgImage[] }) => {
       animationHandler="fade"
       transitionTime={3000}
       interval={60000}
+      className="h-screen w-screen overflow-hidden -z-10"
     >
       {images?.map((item: BgImage, i: number) => (
-        <div key={i} className="h-screen w-full overflow-hidden -z-10">
-          <Image
-            key={i}
-            src={item.urls.full}
-            className="h-screen w-full xl:h-full object-cover rounded-none"
-            alt={item.slug}
-          />
+        <div
+          key={i}
+          className="h-screen w-screen bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(${item.urls.full})` }}
+        >
         </div>
       ))}
     </Carousel>

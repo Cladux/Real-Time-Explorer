@@ -1,12 +1,20 @@
+import type { CityDetails } from "@/types";
 import { create } from "zustand";
 type Store = {
   city?: string;
   country?: string;
-  update: (city: string, country?: string) => void;
+  cityDetails?: CityDetails;
+  updateCity: (city: string) => void;
+  updateCountry: (country: string) => void;
+  updateCityDetails: (cityDetails: CityDetails) => void;
 };
 
 export const useStore = create<Store>((set) => ({
   city: undefined,
   country: undefined,
-  update: (city, country) => set(() => ({ city, country })),
+  lat: undefined,
+  long: undefined,
+  updateCity: (city) => set((state) => ({ ...state, city })),
+  updateCountry: (country) => set((state) => ({ ...state, country })),
+  updateCityDetails: (cityDetails) => set((state) => ({ ...state, cityDetails })),
 }));

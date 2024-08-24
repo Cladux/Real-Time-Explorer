@@ -1,10 +1,56 @@
-export type City = {
-  country: string;
-  is_capital: boolean;
-  latitude: number;
-  longitude: number;
+export type Country = {
+  id: number;
   name: string;
-  population: number;
+  iso2: string;
+  iso3: string;
+  phonecode: string;
+  capital: string;
+  currency: string;
+  native: string;
+  emoji: string;
+};
+export type Sate = {
+  id: number;
+  name: string;
+  iso2: string;
+};
+
+export type City = {
+  id: number;
+  name: string;
+};
+export type CityDetails = {
+  datasource: {
+    sourcename: string;
+    attribution: string;
+    license: string;
+    url: string;
+  };
+  ref: string;
+  old_name: string;
+  country: string;
+  country_code: string;
+  region: string;
+  state: string;
+  city: string;
+  lon: number;
+  lat: number;
+  state_code: string;
+  state_COG: string;
+  result_type: string;
+  formatted: string;
+  address_line1: string;
+  address_line2: string;
+  category: string;
+  timezone: {
+    name: string;
+    offset_STD: string;
+    offset_STD_seconds: number;
+    offset_DST: string;
+    offset_DST_seconds: number;
+    abbreviation_STD: string;
+    abbreviation_DST: string;
+  };
 };
 
 export type BgImage = {
@@ -28,16 +74,16 @@ export type BgImage = {
   };
 };
 
-export type articles ={
-  author:string;
-  content:string;
-  description:string;
-  publishedAt:Date;
-  source:{
-    id:string;
+export type articles = {
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: Date;
+  source: {
+    id: string;
     name: string;
-  }
+  };
   title: string;
   url: string;
-  urlToImage:string;
-} 
+  urlToImage: string;
+};
