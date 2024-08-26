@@ -19,6 +19,7 @@ const Background = () => {
   const { city } = useStore();
   const [images, setImages] = useState<BgImage[]>();
 
+  // getting background images after setting city
   const { mutate, isPending } = useMutation({
     mutationFn: async () =>
       await fetch(

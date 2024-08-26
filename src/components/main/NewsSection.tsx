@@ -7,13 +7,13 @@ import NewsCard from "./NewsCard";
 import { IoIosArrowDown } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
-import { IoIosMore } from "react-icons/io";
 
 const NewsSection = () => {
   const { country, city } = useStore();
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState(0);
 
+  //getting news articles in infinite mode
   const fetchItems = async ({ pageParam = 0 }) => {
     const res = await fetch(
       `https://newsapi.org/v2/everything?q=${isSelected ? country : city}&pageSize=10&page=${pageParam}&apiKey=${
@@ -35,6 +35,7 @@ const NewsSection = () => {
     refetchInterval: 60000,
   });
 
+  //refreshing news every 60 seconds
   useEffect(() => {
     if (isSuccess) {
       const interval = setInterval(() => {
@@ -43,8 +44,9 @@ const NewsSection = () => {
       return () => clearInterval(interval);
     }
   }, [isSuccess]);
+
   return (
-    <Card className="h-full overflow-y-auto w-full md:w-80 bg-opacity-90 shadow">
+    <Card className="h-full overflow-y-auto w-full bg-opacity-60 shadow">
       <CardHeader className="flex justify-between items-center">
         <Switch size="sm" isSelected={isSelected} onValueChange={setIsSelected}>
           country
@@ -60,7 +62,8 @@ const NewsSection = () => {
           label={
             isFetching && (
               <span className="flex items-end gap-0.5">
-                refreshing<CgSpinner className="animate-spin" />
+                refreshing
+                <CgSpinner className="animate-spin" />
               </span>
             )
           }

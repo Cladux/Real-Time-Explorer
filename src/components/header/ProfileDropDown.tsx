@@ -11,7 +11,7 @@ const ProfileDropDown = () => {
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
         <User
-          classNames={{ base: "flex-row-reverse", wrapper:"items-end" }}
+          classNames={{ base: "flex-row-reverse", wrapper:"items-end hidden md:flex" }}
           as="button"
           avatarProps={{
             size:"sm",
@@ -25,6 +25,10 @@ const ProfileDropDown = () => {
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions">
+      <DropdownItem key="logout" className="md:hidden">
+          <h3>{session.data?.user?.name}</h3>
+          <p>{session.data?.user?.email}</p>
+        </DropdownItem>
         <DropdownItem key="logout">
           <Button onClick={() => signOut()} size="sm" fullWidth color="danger">
             <FiLogOut size={20} /> Log Out

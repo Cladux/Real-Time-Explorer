@@ -6,7 +6,7 @@ import type { City, Country, Sate } from "@/types";
 import { useState } from "react";
 import { BiWorld } from "react-icons/bi";
 import { FaTreeCity } from "react-icons/fa6";
-import { FaMapMarkedAlt, FaSearch } from "react-icons/fa";
+import { FaMapMarkedAlt } from "react-icons/fa";
 
 const options = {
   method: "GET",
@@ -16,7 +16,7 @@ const options = {
 };
 
 const SearchCityModal = () => {
-  const { city, country, updateCountry, updateCity } = useStore();
+  const { updateCountry, updateCity } = useStore();
   const [countryIso2, setCountryIso2] = useState<string>();
   const [capital, setCapital] = useState<string>();
 
@@ -53,9 +53,10 @@ const SearchCityModal = () => {
         options
       ).then((res) => res.json()),
   });
+
   return (
     <>
-      {" "}
+      {/* Country select */}
       <Select
         size="lg"
         label="Select Country"
@@ -79,6 +80,8 @@ const SearchCityModal = () => {
           </SelectItem>
         ))}
       </Select>
+
+      {/* state select */}
       <Select
         size="lg"
         label="Select State"
@@ -93,6 +96,8 @@ const SearchCityModal = () => {
           </SelectItem>
         ))}
       </Select>
+
+      {/* city select */}
       <Select
         size="lg"
         label="Select City"

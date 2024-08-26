@@ -14,6 +14,7 @@ const LocalTime = () => {
   const { city, cityDetails, updateCityDetails } = useStore();
   const [time, setTime] = useState(new Date());
 
+  //getting city details. lat, long, timeZone ,....
   const { data: cityDetailsResult, isSuccess: gotCityDetails } = useQuery<{ results: CityDetails[] }>({
     queryKey: ["countries", city],
     queryFn: async () =>
@@ -22,11 +23,11 @@ const LocalTime = () => {
         options
       ).then((res) => res.json()),
   });
-
   useEffect(() => {
     gotCityDetails && updateCityDetails(cityDetailsResult.results[0]);
   }, [, updateCityDetails, cityDetailsResult, gotCityDetails]);
 
+  //start Clock after getting city details successfully
   useEffect(() => {
     if (gotCityDetails) {
       const intervalId = setInterval(() => {
@@ -44,8 +45,9 @@ const LocalTime = () => {
     hour12: true,
     timeZone: cityDetails?.timezone.name,
   }).format(time);
+  
   return (
-    <Card className="shadow bg-opacity-70 w-full md:w-72 absolute top-3 left-1/2 -translate-x-1/2">
+    <Card className="shadow bg-opacity-60 w-full h-24 sm:w-96 lg:w-72">
       <CardBody className="flex justify-center">
         <div className="font-black text-4xl text-neutral-200 text-center">{formattedTime}</div>
         <span className="mt-1 text-xs text-neutral-400 text-center">

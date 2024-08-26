@@ -5,11 +5,11 @@ import MainLayout from "@/components/main/MainLayout";
 export default function Home() {
   return (
     <main className="relative">
+      <Background />
       <header>
         <Nav />
       </header>
       <section>
-        <Background />
         <MainLayout />
       </section>
     </main>
