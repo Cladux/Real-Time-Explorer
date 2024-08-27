@@ -1,7 +1,7 @@
 "use client";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useStore } from "@/lib/store";
-import { Avatar, Chip, Select, SelectItem } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem, Avatar, Chip, Select, SelectItem } from "@nextui-org/react";
 import type { City, Country, Sate } from "@/types";
 import { useState } from "react";
 import { BiWorld } from "react-icons/bi";
@@ -18,7 +18,6 @@ const options = {
 const SearchCityModal = () => {
   const { updateCountry, updateCity } = useStore();
   const [countryIso2, setCountryIso2] = useState<string>();
-  const [capital, setCapital] = useState<string>();
 
   const {
     data: countries,
@@ -57,66 +56,66 @@ const SearchCityModal = () => {
   return (
     <>
       {/* Country select */}
-      <Select
+      <Autocomplete
+        fullWidth
         size="lg"
         label="Select Country"
+        defaultItems={countries ?? []}
+        placeholder="Germany"
         startContent={<BiWorld />}
         isLoading={gettingCountries}
         isDisabled={!gotCountries}
-        classNames={{ listboxWrapper: "show-scroll" }}
+        onSelectionChange={(iso2) => {
+          getStats(iso2?.toString() ?? "");
+          setCountryIso2(iso2?.toString() ?? "");
+        }}
+        onInputChange={(value: string) => updateCountry(value)}
       >
-        {countries?.map(({ name, iso2, capital }: Country, i: number) => (
-          <SelectItem
-            onClick={() => {
-              getStats(iso2);
-              setCapital(capital);
-              setCountryIso2(iso2);
-              updateCountry(name);
-            }}
+        {countries?.map(({ name, iso2 }: Country) => (
+          <AutocompleteItem
+            key={iso2}
+            value={name}
             startContent={<Avatar size="sm" src={`https://flagcdn.com/${iso2.toLocaleLowerCase()}.svg`} />}
-            key={i}
+            endContent={<Chip size="sm">{iso2}</Chip>}
           >
             {name}
-          </SelectItem>
+          </AutocompleteItem>
         ))}
-      </Select>
+      </Autocomplete>
 
       {/* state select */}
-      <Select
+      <Autocomplete
+        fullWidth
         size="lg"
         label="Select State"
+        defaultItems={stats ?? []}
+        placeholder="Bavaria"
         startContent={<FaMapMarkedAlt />}
         isLoading={gettingStats}
         isDisabled={!gotStats}
-        classNames={{ listboxWrapper: "show-scroll" }}
+        onSelectionChange={(iso2) => getCities(iso2?.toString() ?? "")}
       >
-        {stats?.map(({ name, iso2 }: Sate, i: number) => (
-          <SelectItem onClick={() => getCities(iso2)} key={i}>
-            {name}
-          </SelectItem>
+        {stats?.map(({ name, iso2 }: Sate) => (
+          <AutocompleteItem key={iso2}>{name}</AutocompleteItem>
         ))}
-      </Select>
+      </Autocomplete>
 
       {/* city select */}
-      <Select
+      <Autocomplete
+        fullWidth
         size="lg"
-        label="Select City"
+       label="Select City"
+        defaultItems={cities ?? []}
+        placeholder="Munich"
         startContent={<FaTreeCity />}
         isLoading={gettingCities}
         isDisabled={!gotCities}
-        classNames={{ listboxWrapper: "show-scroll" }}
+        onSelectionChange={(name) => updateCity(name?.toString() ?? "")}
       >
-        {cities?.map(({ name }: City, i: number) => (
-          <SelectItem
-            color={name === capital ? "success" : "default"}
-            endContent={name === capital && <Chip size="sm">Capital</Chip>}
-            onClick={() => updateCity(name)}
-            key={i}
-          >
-            {name}
-          </SelectItem>
+        {cities?.map(({ name }: City) => (
+          <AutocompleteItem key={name}>{name}</AutocompleteItem>
         ))}
-      </Select>
+      </Autocomplete>
     </>
   );
 };

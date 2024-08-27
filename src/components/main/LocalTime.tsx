@@ -1,5 +1,4 @@
 "use client";
-
 import { useStore } from "@/lib/store";
 import type { CityDetails } from "@/types";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
@@ -38,7 +37,7 @@ const LocalTime = () => {
     }
   }, [gotCityDetails]);
 
-  const formattedTime = new Intl.DateTimeFormat("en-US", {
+  const localTime = new Intl.DateTimeFormat("en-US", {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
@@ -46,13 +45,21 @@ const LocalTime = () => {
     timeZone: cityDetails?.timezone.name,
   }).format(time);
   
+  const localDate = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    timeZone: cityDetails?.timezone.name,
+  }).format(time);
+
   return (
-    <Card className="shadow bg-opacity-60 w-full h-24 sm:w-96 lg:w-72">
+    <Card className="shadow bg-opacity-50 w-full h-24 sm:w-96 lg:w-72">
       <CardBody className="flex justify-center">
-        <div className="font-black text-4xl text-neutral-200 text-center">{formattedTime}</div>
-        <span className="mt-1 text-xs text-neutral-400 text-center">
+        <span className="mt-1 text-xs text-neutral-300 text-center">
           Current Time in <span className="font-semibold text-sm">{city}</span>
         </span>
+        <div className="font-black text-4xl text-neutral-200 text-center">{localTime}</div>
+      <div className="text-center text-xs text-neutral-300">{localDate}</div>  
       </CardBody>
     </Card>
   );

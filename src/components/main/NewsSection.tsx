@@ -1,7 +1,7 @@
 "use client";
 import { useStore } from "@/lib/store";
 import type { articles } from "@/types";
-import { Button, Card, CardBody, CardHeader, Progress, Skeleton, Spinner, Switch } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Progress, Skeleton, Switch } from "@nextui-org/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import NewsCard from "./NewsCard";
 import { IoIosArrowDown } from "react-icons/io";
@@ -43,7 +43,7 @@ const NewsSection = () => {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [isSuccess]);
+  }, [isSuccess, isSelected]);
 
   return (
     <Card className="h-full overflow-y-auto w-full bg-opacity-60 shadow">
