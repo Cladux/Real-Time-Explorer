@@ -20,7 +20,7 @@ const Background = () => {
   const [images, setImages] = useState<BgImage[]>();
 
   // getting background images after setting city
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, isSuccess } = useMutation({
     mutationFn: async () =>
       await fetch(
         `https://api.unsplash.com/search/photos?query=${city}&orientation=landscape&content_filter=high`,
@@ -34,7 +34,7 @@ const Background = () => {
 
   return (
     <Skeleton
-      isLoaded={!isPending}
+      isLoaded={isSuccess}
       className="w-full h-screen absolute top-0 left-0 overflow-hidden flex justify-center"
     >
       {images ? (
