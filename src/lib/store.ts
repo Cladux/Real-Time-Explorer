@@ -12,8 +12,7 @@ type Store = {
 export const useStore = create<Store>((set) => ({
   city: undefined,
   country: undefined,
-  lat: undefined,
-  long: undefined,
+  cityDetails: undefined,
   updateCity: (city) => set((state) => ({ ...state, city })),
   updateCountry: (country) => set((state) => ({ ...state, country })),
   updateCityDetails: (cityDetails) => set((state) => ({ ...state, cityDetails })),

@@ -1,7 +1,7 @@
 "use client";
 import { useStore } from "@/lib/store";
 import type { CityDetails } from "@/types";
-import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Skeleton } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
@@ -44,7 +44,7 @@ const LocalTime = () => {
     hour12: true,
     timeZone: cityDetails?.timezone.name,
   }).format(time);
-  
+
   const localDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "numeric",
@@ -53,15 +53,17 @@ const LocalTime = () => {
   }).format(time);
 
   return (
-    <Card className="shadow bg-opacity-60 w-full h-28 sm:w-96 lg:w-72">
-      <CardBody className="flex justify-center">
-        <span className="text-xs text-neutral-300 text-center">
-          Current Time in <span className="font-semibold text-sm">{city}</span>
-        </span>
-        <div className="font-black text-4xl text-neutral-200 text-center my-1">{localTime}</div>
-      <div className="text-center text-xs text-neutral-300">{localDate}</div>  
-      </CardBody>
-    </Card>
+    <Skeleton isLoaded={gotCityDetails} className="rounded-xl opacity-60 w-full h-28 sm:w-96 lg:w-72">
+      <Card className="shadow bg-opacity-60">
+        <CardBody className="flex justify-center">
+          <span className="text-xs text-neutral-300 text-center">
+            Current Time in <span className="font-semibold text-sm">{city}</span>
+          </span>
+          <div className="font-black text-4xl text-neutral-200 text-center my-1">{localTime}</div>
+          <div className="text-center text-xs text-neutral-300">{localDate}</div>
+        </CardBody>
+      </Card>
+    </Skeleton>
   );
 };
 

@@ -22,7 +22,7 @@ const NewsCard = ({ news }: { news: articles }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div>
-      <Card className="bg-opacity-90 shadow-sm">
+      <Card as="article" className="bg-opacity-90 shadow-sm">
         <CardHeader className="bg-transparent">
           <Image isBlurred removeWrapper loading="lazy" src={news.urlToImage} alt={news.title} className="w-full" />
         </CardHeader>
@@ -55,7 +55,7 @@ const NewsCard = ({ news }: { news: articles }) => {
                   author: <span className="text-xs">{news.author}</span>
                 </p>
               </ModalHeader>
-              <ModalBody>
+              <ModalBody as="article">
                 <Image isBlurred loading="lazy" src={news.urlToImage} alt={news.title} />
                 <p>{news.description}</p>
                 <p>{news.content}</p>
