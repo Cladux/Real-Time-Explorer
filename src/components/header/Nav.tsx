@@ -12,7 +12,7 @@ import SearchCities from "./SearchCities";
 
 const Nav = () => {
   return (
-    <Navbar isBlurred={false} maxWidth="xl" className="bg-opacity-90 bg-neutral-800">
+    <Navbar isBlurred={false} maxWidth="full" className="bg-opacity-90 bg-neutral-800">
       <NavbarContent className="md:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>

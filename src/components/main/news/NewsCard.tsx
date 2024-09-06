@@ -21,7 +21,7 @@ import React from "react";
 const NewsCard = ({ news }: { news: articles }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
-    <div>
+    <div className="snap-start">
       <Card as="article" className="bg-opacity-90 shadow-sm">
         <CardHeader className="bg-transparent">
           <Image isBlurred removeWrapper loading="lazy" src={news.urlToImage} alt={news.title} className="w-full" />

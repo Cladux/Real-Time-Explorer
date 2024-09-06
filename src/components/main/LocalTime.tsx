@@ -53,7 +53,7 @@ const LocalTime = () => {
   }).format(time);
 
   return (
-    <Skeleton isLoaded={gotCityDetails} className="rounded-xl opacity-60 w-full h-28 sm:w-96 lg:w-72">
+    <Skeleton isLoaded={gotCityDetails} className="rounded-xl w-full h-28 sm:w-96 lg:w-72">
       <Card className="shadow bg-opacity-60">
         <CardBody className="flex justify-center">
           <span className="text-xs text-neutral-300 text-center">

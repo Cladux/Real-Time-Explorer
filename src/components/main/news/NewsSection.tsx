@@ -37,7 +37,7 @@ const NewsSection = () => {
       totalResults: data.totalResults,
     };
   };
-  const { data, fetchNextPage, isFetchingNextPage, isFetching, hasNextPage, isSuccess, isPending } = useInfiniteQuery({
+  const { data, fetchNextPage, isFetchingNextPage, isFetching, hasNextPage, isSuccess } = useInfiniteQuery({
     queryKey: ["Items", isSelected],
     queryFn: fetchItems,
     initialPageParam: 1,
@@ -79,8 +79,8 @@ const NewsSection = () => {
         )}
       </CardHeader>
       {toggleNews && (
-        <CardBody>
-          <Skeleton className="rounded-xl w-full h-72 mb-5" isLoaded={isSuccess}>
+        <CardBody className="snap-mandatory snap-y">
+          <Skeleton className="rounded-xl w-full h-72 mb-5 snap-center" isLoaded={isSuccess}>
             {data?.pages.map((page, i: number) => (
               <div key={i} className="flex flex-col space-y-5 my-5">
                 {page.articles.map((item: articles, j: number) => (

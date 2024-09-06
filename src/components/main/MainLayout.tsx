@@ -2,7 +2,7 @@
 import { useStore } from "@/lib/store";
 import NewsSection from "./news/NewsSection";
 import LocalTime from "./LocalTime";
-import WeatherCard from "./weather/WeatherCard";
+import WeatherSection from "./weather/WeatherSection";
 
 const MainLayout = () => {
   const { country, city, cityDetails } = useStore();
@@ -15,7 +15,7 @@ const MainLayout = () => {
         {country && city && <NewsSection />}
       </section>
       <section className="col-span-2 lg:col-start-5 lg:row-start-1 lg:row-end-4">
-        {country && city && cityDetails && <WeatherCard />}
+        {country && city && cityDetails && <WeatherSection />}
       </section>
       <section className="col-start-1 col-end-4 row-span-3 lg:col-start-2 lg:col-end-5 lg:row-span-2"></section>
     </div>
