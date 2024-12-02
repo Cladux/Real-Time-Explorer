@@ -1,5 +1,4 @@
 "use client";
-import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
 import type { BgImage } from "@/types";
 
@@ -24,11 +23,10 @@ const BgImageSlider = ({ images }: { images?: BgImage[] }) => {
           key={i}
           className="h-screen w-screen bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(${item.urls.full})` }}
-        >
-        </div>
+        ></div>
       ))}
     </Carousel>
   );
 };
 
-export default memo(BgImageSlider);
+export default BgImageSlider;
