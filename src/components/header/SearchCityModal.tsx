@@ -19,6 +19,7 @@ const SearchCityModal = () => {
   const { updateCountry, updateCity } = useStore();
   const [countryIso2, setCountryIso2] = useState<string>();
 
+  //custom Hook needed ?
   const {
     data: countries,
     isPending: gettingCountries,
@@ -104,7 +105,7 @@ const SearchCityModal = () => {
       <Autocomplete
         fullWidth
         size="lg"
-       label="Select City"
+        label="Select City"
         defaultItems={cities ?? []}
         placeholder="Munich"
         startContent={<FaTreeCity />}

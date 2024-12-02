@@ -1,10 +1,9 @@
 "use client";
-
 import { useStore } from "@/lib/store";
 import type { BgImage } from "@/types";
 import { Skeleton } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import BgImageSlider from "./BgImageSlider";
 
@@ -48,4 +47,4 @@ const Background = () => {
   );
 };
 
-export default memo(Background);
+export default Background;
