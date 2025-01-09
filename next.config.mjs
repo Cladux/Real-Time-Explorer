@@ -10,7 +10,7 @@ const nextConfig = {
     OPENWEATHER_API: "2a9515e02d7fc6e3ba647d331a44b4b9",
   },
   experimental: {
-    optimizePackageImports: ["zod", "sharp", "next-auth", "framer-motion", "@nextui-org/react"],
+    optimizePackageImports: ["sharp", "framer-motion", "@nextui-org/react"],
     serverActions: {
       bodySizeLimit: "2mb",
     },

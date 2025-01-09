@@ -1,13 +1,5 @@
 "use client";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuItem,
-  NavbarMenuToggle,
-} from "@nextui-org/react";
-import ProfileDropDown from "./ProfileDropDown";
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
 import SearchCities from "./SearchCities";
 
 const Nav = () => {
@@ -27,7 +19,7 @@ const Nav = () => {
       </NavbarContent>
 
       <NavbarContent as="div" justify="end">
-        <ProfileDropDown />
+        {/* <ProfileDropDown /> */}
       </NavbarContent>
 
       <NavbarMenu>
