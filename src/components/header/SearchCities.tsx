@@ -11,7 +11,12 @@ const SearchCities = () => {
 
   return (
     <>
-      <Button className="cursor-pointer bg-opacity-95" fullWidth onPress={onOpen} startContent={!country && !city ? <FaSearch /> : <MdEditLocationAlt />}>
+      <Button
+        className="cursor-pointer bg-opacity-95"
+        fullWidth
+        onPress={onOpen}
+        startContent={!country && !city ? <FaSearch /> : <MdEditLocationAlt />}
+      >
         {country && city ? `${country}, ${city}` : "Search for the city"}
       </Button>
       <Modal size="2xl" isOpen={isOpen} onOpenChange={onOpenChange}>

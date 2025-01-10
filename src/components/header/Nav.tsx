@@ -1,6 +1,18 @@
 "use client";
-import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
+import {
+  Avatar,
+  AvatarGroup,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from "@nextui-org/react";
 import SearchCities from "./SearchCities";
+import Link from "next/link";
+import { BsGithub } from "react-icons/bs";
+import { LiaLinkedin } from "react-icons/lia";
 
 const Nav = () => {
   return (
@@ -19,7 +31,14 @@ const Nav = () => {
       </NavbarContent>
 
       <NavbarContent as="div" justify="end">
-        {/* <ProfileDropDown /> */}
+        <AvatarGroup isBordered size="sm">
+          <Link href="https://www.linkedin.com/in/cladux">
+            <Avatar radius="sm" color="primary" fallback={<LiaLinkedin className="size-10" />} />
+          </Link>
+          <Link href="https://github.com/Cladux/Real-Time-Explorer">
+            <Avatar color="secondary" fallback={<BsGithub className="size-10" />} />
+          </Link>
+        </AvatarGroup>
       </NavbarContent>
 
       <NavbarMenu>
